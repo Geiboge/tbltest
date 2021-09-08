@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>History Test Page</title>
+    <link rel="prerender" type="html" href="https://www.youku.com" />
+</head>
+
+<body>
+    <button id="first" onclick="openNewPage()">
+    <div>open new page to test history forward</div>
+  </button>
+
+    <button id="first" onclick="historyGo1()">
+    <div>history.go(-1)</div>
+  </button>
+
+    <button id="first" onclick="historyBack()">
+    <div>history.back()</div>
+  </button>
+
+    <button id="first" onclick="historyForward()">
+    <div>history.forward()</div>
+  </button>
+
+    <button id="first" onclick="historyreplaceState()">
+    <div>history.replaceState()</div>
+  </button>
+
+    <button id="first" onclick="historypushState()">
+    <div>history.pushState()</div>
+  </button>
+
+    <button id="first" onclick="locationReplace()">
+    <div>location.replace()</div>
+  </button>
+
+    <button id="first" onclick="locationHref()">
+    <div>location.href</div>
+   </button>
+
+    <button id="first" onclick="history.go(-2)">
+    <div>history.go(-2)</div>
+   </button>
+
+    <button id="first" onclick="prerender">
+    <a href="https://www.youku.com">www.youku.com</a>
+   </button>
+
+</body>
+<style>
+    body {
+        padding: 40px;
+    }
+    
+    button {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 24px;
+    }
+    
+    div {
+        width: 100%;
+        height: 100%;
+        background-color: grey;
+        font-size: 36px;
+        line-height: 100px;
+    }
+    
+    div.hyperlink {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 48px;
+    }
+</style>
+<script>
+    var i = 1;
+
+    function openNewPage() {
+        window.open("https://www.youku.com", "_self");
+    }
+
+    function historyGo1() {
+        history.go(-1)
+    }
+
+    function historyBack() {
+        history.back();
+    }
+
+    function historyForward() {
+        history.forward();
+    }
+
+    function locationHref() {
+        location.href = "https://www.baidu.com"
+    }
+
+    function historyreplaceState() {
+        history.replaceState({
+            foo: "bar"
+        }, "", "historytest.html?a=12");
+    }
+
+    function historypushState() {
+        history.pushState({
+            foo: "bar"
+        }, "", "historytest.html?a=12");
+    }
+
+    function locationReplace() {
+        location.replace("https://www.baidu.com")
+    }
+
+    window.onload = () => {
+        console.log('historytest.html onload');
+        //alert('historytest.html onload');
+        /* setTimeout(function() {
+            historypushState();
+        }, 5000); */
+        //historypushState();
+    }
+
+    window.onunload = () => {
+        console.log('historytest.html onbeforeunload ');
+        alert('historytest.html onbeforeunload ');
+    }
+</script>
+
+</html>

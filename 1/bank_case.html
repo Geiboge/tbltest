@@ -1,0 +1,539 @@
+<html style="opacity: 1;">
+
+<head>
+    <title>财富一览</title>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link type="text/css" rel="stylesheet" href="../css/accountmanage.css">
+    <script async="" src="https://static.psbc.com:8090/mbank_f/js/ares/widget/sensorsdata.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../../../js/bootstrap.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://static.psbc.com:8090/mbank_f/js/ares/resources/default/css/default.css">
+    <link type="text/css" rel="stylesheet" href="https://static.psbc.com:8090/mbank_f/theme/src/default/css/default.css">
+    <script type="text/javascript" src="https://static.psbc.com:8090/mbank_f/js/ares/ares.js?v=1" charset="utf-8"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            background: #fff;
+        }
+        
+        .normal-right {
+            font-weight: bold;
+        }
+        
+        .ui-tab-nav li.current {
+            color: #666666;
+            font-weight: bold;
+        }
+        
+        .ui-tab-nav li:after {
+            background: #fff;
+        }
+        
+        .ui-tab-nav {
+            font-weight: bold;
+        }
+        
+        .mousedown {
+            background-color: #ffffff;
+            font-size: 25px;
+            font-weight: bold;
+            height: 195px;
+            width: 100%;
+            line-height: 45px;
+            text-align: center;
+            top: 35px;
+            position: absolute;
+            z-index: 999;
+        }
+        
+        .mouseDisplay {
+            z-index: 10;
+            display: block;
+        }
+        
+        #mainCss {
+            color: #23DBFD;
+            z-index: 5;
+        }
+        
+        #mainCss {
+            color: #23DBFD;
+            font-size: 16px;
+            height: 40px;
+            width: 100%;
+            z-index: 5;
+            line-height: 40px;
+            text-align: center;
+            top: 175px;
+            position: absolute;
+        }
+        
+        .container p {
+            margin: 0 auto 10px;
+            width: 80%;
+            height: 80px;
+            border: 1px solid;
+        }
+        
+        #my {
+            display: none;
+            background-image: none;
+            backgroun-color: none;
+            background: #fff;
+        }
+        
+        #details::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        .ui-i-background-down {
+            background: url("https://static.psbc.com:8090/mbank_f/page/account/wealth_index/img/down-arrow.png") no-repeat;
+            background-size: 15px;
+            width: 9px;
+            height: 14px;
+            float: left;
+            position: absolute;
+            margin-top: 13px;
+            padding-left: 5px;
+        }
+        
+        .ui-i-background-up {
+            background: url("https://static.psbc.com:8090/mbank_f/page/account/wealth_index/img/up-arrow.png") no-repeat;
+            background-size: 15px;
+            width: 9px;
+            height: 14px;
+            float: left;
+            position: absolute;
+            margin-top: 13px;
+            padding-left: 5px;
+        }
+        
+        .ui-i-background-right {
+            background: url("./img/right.png") no-repeat;
+            background-size: 9px;
+            width: 9px;
+            height: 14px;
+            float: left;
+            position: absolute;
+            margin-top: 13px;
+            padding-left: 5px;
+        }
+        
+        .ui-i-arrow {
+            background: url(./img/right.png) no-repeat;
+            background-size: 6px;
+            width: 7px;
+            height: 9px;
+            position: absolute;
+            right: 35px;
+            margin-top: 4px;
+        }
+        
+        .detail-name-hid {
+            display: none !important;
+        }
+    </style>
+    <script type="text/javascript">
+        seajs.use(["Fw.device.Device", "Fw.device.LoadMask", "Fw.device.MessageBox", "Fw.device.Tooltip", "Fw.device.Security", "Fw.device.Ajax", "Fw.sensors_sdk"], function() {
+            Fw.Logger.debug("加载业务功能（page/account/wealth_index/wealth_index）");
+            seajs.use("page/account/wealth_index/wealth_index")
+        });
+    </script>
+    <link href="./css/wealth.css" rel="stylesheet" type="text/css">
+</head>
+
+<body style="background-color: #fff;height: 100%;">
+    <div class="container" id="container">
+        <div id="datailOne" class="scroll">
+            <!-- 选项卡 -->
+            <div id="tab" class="ui-tab">
+                <ul class="ui-tab-nav">
+                    <li class="current">总资产<i></i></li>
+                    <li class="">总负债<i></i></li>
+                </ul>
+            </div>
+            <div class="chart">
+                <div id="main" style="display: block; transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1); -webkit-tap-highlight-color: transparent; user-select: none; background-color: rgba(0, 0, 0, 0);" _echarts_instance_="1614221548504">
+                    <div style="position: relative; overflow: hidden; width: 330px; height: 180px;">
+                        <div data-zr-dom-id="bg" style="position: absolute; left: 0px; top: 0px; width: 330px; height: 180px; user-select: none;"></div><canvas width="990" height="540" data-zr-dom-id="0" style="position: absolute; left: 0px; top: 0px; width: 330px; height: 180px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="990"
+                            height="540" data-zr-dom-id="_zrender_hover_" style="position: absolute; left: 0px; top: 0px; width: 330px; height: 180px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div>
+                </div>
+                <div class="hidden" id="mainCss">详情</div>
+                <div class="mousedown hidden">
+                    <div style="margin-top:75px;" id="mouseZZC">总资产</div>
+                    <div id="mouseZZCJE">￥103.89</div>
+                </div>
+            </div>
+            <div style="height: 20px; width: 100%; visibility: hidden;" id="nullDiv"></div>
+            <div class="title fixedTop" id="details-block" style="display: block; transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);">
+                <div class="title-top top-margin save">￥102.89</div>
+                <div class="title-top top-margin outer">￥1.00</div>
+                <div class="title-top">
+                    <div class="block"></div><span class="despositor-rmb block-font give">存款</span></div>
+                <div class="title-top">
+                    <div class="block green-block"></div><span class="despositor-rmb block-font getOut">投资</span></div>
+            </div>
+            <div id="details">
+                <div id="saveMoney">
+                    <div class="despositor">
+                        <div class="despositor-greenline">
+                            <div class="greenline-stack ui-theme-background"></div>
+                        </div><span class="despositor-rmb">存款</span></div>
+                    <div style="margin: 20px;">
+                        <div style="margin: 0px 5px 0px 10px;">
+                            <div>
+                                <div class="wealth despositor">
+                                    <div class="img-div"><img class="img" src="./img/rmb.png"></div><span class="despositor-rmb">人民币</span></div>
+                                <ul id="rmb-ul">
+                                    <li class="liRmb">
+                                        <div class="right-div despositor"><span class="right-font">活期存款</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right">￥102.89</span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font"></span></div>
+                                                </div><i class="ui-i-background-right" id="rmb1"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashrmb1" style="margin:0 auto"></div>
+                                    </li>
+                                    <li class="liRmb">
+                                        <div class="right-div despositor"><span class="right-font">定期存款</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right"><span class="ui-theme-font">去购买</span></span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font"></span></div>
+                                                </div><i class="ui-i-background-right" id="rmb2"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashrmb2" style="margin:0 auto"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul id=""></ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="investor">
+                    <div class="despositor">
+                        <div class="despositor-greenline">
+                            <div class="greenline-stack ui-theme-background"></div>
+                        </div><span class="despositor-rmb">投资</span></div>
+                    <div style="margin: 20px;">
+                        <div style="margin: 0px 5px 0px 10px;">
+                            <div>
+                                <div class="wealth despositor">
+                                    <div class="img-div"><img class="img" src="./img/rmb.png"></div><span class="despositor-rmb">人民币</span></div>
+                                <ul id="outerRmb-ul">
+                                    <li class="liRmb">
+                                        <div class="right-div despositor"><span class="right-font">资管产品</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right"></span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font">去购买</span></div>
+                                                </div><i class="ui-i-background-right" id="rmb7"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashrmb7" style="margin:0 auto"></div>
+                                    </li>
+                                    <li class="liRmb">
+                                        <div class="right-div despositor"><span class="right-font">基金产品</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right"></span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font">去购买</span></div>
+                                                </div><i class="ui-i-background-right" id="rmb4"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashrmb4" style="margin:0 auto;position: absolute;"></div>
+                                    </li>
+                                    <li class="liRmb">
+                                        <div class="right-div despositor"><span class="right-font">理财产品</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right">￥1.00</span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font"></span></div>
+                                                </div><i class="ui-i-background-up" id="rmb5"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashrmb5" style="margin: 0px auto;display: block;">
+                                            <div class="detail-name">已确认<span class="right-rmb-right detail-cash">￥1.00</span><i class="ui-i-arrow"></i></div>
+                                        </div>
+                                    </li>
+                                    <li class="liRmb">
+                                        <div class="right-div despositor"><span class="right-font">邮益宝</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right"></span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font">去购买</span></div>
+                                                </div><i class="ui-i-background-right" id="rmb3"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashrmb3" style="margin:0 auto"></div>
+                                    </li>
+                                    <li class="liRmb">
+                                        <div class="right-div despositor"><span class="right-font">国债产品</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right"></span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font">去看看</span></div>
+                                                </div><i class="ui-i-background-right" id="rmb6"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashrmb6" style="margin:0 auto"></div>
+                                    </li>
+                                    <li class="liRmb">
+                                        <div class="right-div despositor"><span class="right-font">贵金属</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right"></span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font">去看看</span></div>
+                                                </div><i class="ui-i-background-right" id="rmbundefined"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashrmbundefined" style="margin:0 auto"></div>
+                                    </li>
+                                </ul>
+                                <div class="wealth despositor">
+                                    <div class="img-div"><svg class="img ui-theme-svg" width="56pt" height="56pt" viewBox="0 0 56 56" version="1.1"><path fill="#51c414" opacity="1.00" d=" M 4.17 10.32 C 19.07 9.81 34.02 10.14 48.94 10.00 C 50.95 9.82 53.96 10.21 53.90 12.85 C 54.09 23.62 54.02 34.40 53.94 45.17 C 54.01 47.24 51.74 48.32 49.94 48.00 C 35.27 47.97 20.60 48.07 5.93 47.94 C 4.18 48.16 2.02 47.16 2.15 45.12 C 1.90 35.06 2.20 24.99 2.10 14.92 C 2.11 13.27 2.03 10.68 4.17 10.32 M 5.89 13.89 C 5.91 23.94 5.93 33.99 5.96 44.04 C 20.64 43.98 35.32 44.00 50.00 44.00 C 50.00 34.00 50.00 24.00 50.00 14.00 C 35.29 14.02 20.59 13.92 5.89 13.89 Z"></path><path fill="#51c414" opacity="1.00" d=" M 27.34 18.01 C 28.45 18.00 29.56 18.00 30.67 18.02 C 30.82 20.15 32.30 21.71 34.34 22.22 C 33.75 23.02 33.15 23.79 32.51 24.55 C 30.53 24.41 28.61 23.73 26.60 23.82 C 27.63 27.10 31.93 26.72 33.76 29.25 C 35.10 31.28 34.62 34.18 32.61 35.57 C 31.40 36.35 31.02 37.70 30.68 39.00 C 29.58 39.00 28.48 39.00 27.38 38.99 C 26.83 36.33 23.96 35.76 21.88 34.73 C 22.60 33.84 23.29 32.93 24.09 32.10 C 26.15 32.40 28.09 33.89 30.24 33.16 C 30.30 29.21 23.47 30.24 23.06 26.10 C 21.60 22.06 27.03 21.41 27.34 18.01 Z"></path></svg></div>
+                                    <span class="despositor-rmb">外币</span>
+                                </div>
+                                <ul id="outerRmb-ul2">
+                                    <li class="liOuter">
+                                        <div class="right-div despositor"><span class="right-font">理财产品</span>
+                                            <div style="padding-left: 50%;">
+                                                <div class="right-rmb"><span class="right-rmb-right"></span>
+                                                    <div class="normal"><span class="normal-right ui-theme-font">去购买</span></div>
+                                                </div><i class="ui-i-background-right" id="wb5"></i></div>
+                                        </div>
+                                        <div class="despositor detail-name-hid" id="cashwb5" style="margin:0 auto"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="yui-desc" id="wxts"><span class="tishi-title">温馨提示：</span>
+                <div id="tishi"><span class="font-size-14 text-indent-14 text-justify">1、财富一览展示的是客户在我行的部分资产及负债数据，内容仅供参考。</span><br>
+                    <span class="font-size-14 text-indent-14 text-justify">2、资产类数据包括客户名下的活期存款、定期存款、理财产品、基金产品、国债产品及贵金属产品数据。其中，基金产品数据按照基金产品的昨日净值估算；贵金属产品数据按照上一交易日市值估算。</span><br>
+                    <span class="font-size-14 text-indent-14 text-justify">3、负债类数据包括客户的贷款及信用卡消费情况。</span></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="barBox" id="barBox">
+        <div class="bar"></div>
+
+    </div>
+
+    <div class="sticky title" id="my" style="display: block; transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);">
+    </div>
+    <script>
+        function initBox() {
+            var methods = {
+                _preventDefault(e) {
+                    e.preventDefault();
+                },
+                GetPageScroll() {
+                    var y;
+                    if (window.pageYOffset) { // all except IE
+                        y = window.pageYOffset;
+                    } else if (document.documentElement && document.documentElement.scrollTop) { // IE 6 Strict
+                        y = document.documentElement.scrollTop;
+                    } else if (document.body) { // all other IE
+                        y = document.body.scrollTop;
+                    }
+                    return y;
+                },
+                scrollRemoveLimit() { // 解除限制
+                    document.body.style.overflow = 'auto';
+                    document.body.style.position = 'static';
+                    document.body.style.zIndex = '0';
+                    window.removeEventListener('touchmove', function(e) {
+                        e.preventDefault()
+                    }, {
+                        passive: false
+                    });
+                    window.scrollTo(0, this.PageScroll);
+
+                },
+                scrollLimit() { // 限制
+                    document.body.style.overflow = 'hidden';
+                    this.PageScroll = this.GetPageScroll();
+                    document.body.style.position = 'fixed';
+                    document.body.style.zIndex = '-100';
+                    window.addEventListener('touchmove', function(e) {
+                        e.preventDefault()
+                    }, {
+                        passive: false
+                    });
+                    document.body.addEventListener("touchmove", function(e) {
+                        e.preventDefault()
+                    }, {
+                        passive: false
+                    });
+
+                },
+            };
+            methods.scrollLimit();
+            var oContainer = document.getElementById('container');
+            var oScroll = oContainer.children[0];
+            var oBarBox = document.getElementById('barBox');
+            var oBar = oBarBox.children[0];
+
+            // 盒子尺寸
+            var iWrapperH = numberPx(getStyle(oContainer, 'height'));
+            var iScrollH = numberPx(getStyle(oScroll, 'height'));
+            var iBarBoxH = numberPx(getStyle(oBarBox, 'height'));
+            var iBarH = iWrapperH / iScrollH * iBarBoxH;
+
+            // 初始状态
+            setStyle(oBar, {
+                height: iBarH + 'px'
+            })
+
+            // 参数
+            var startTime = 0;
+            var endTime = 0;
+            var isMove = false;
+            var iScrollTop = 0;
+            var iBarTop = 0;
+
+
+            var endTimeout = null;
+
+            oContainer.addEventListener('touchstart', function(e) {
+                startTime = new Date().getTime();
+
+                var startY = e.targetTouches[0].clientY;
+                var startTop = numberPx(getStyle(oScroll, 'top'));
+                var endY = startY;
+                var endTop = startTop;
+
+                setStyle(oScroll, {
+                    top: startTop + 'px'
+                })
+                setStyle(oBar, {
+                    top: -startTop / iScrollH * iBarBoxH + 'px'
+                })
+
+                var moveFn = function(e) {
+                    isMove = true;
+                    var nowY = e.targetTouches[0].clientY;
+                    var nowTop = startTop;
+
+                    endY = nowY;
+
+                    var moveY = nowY - startY;
+                    nowTop += moveY;
+                    endTop = nowTop;
+                    iScrollTop = nowTop > 0 ? 0 : (nowTop < iWrapperH - iScrollH ? iWrapperH - iScrollH : nowTop);
+                    iBarTop = -iScrollTop / iScrollH * iBarBoxH;
+
+                    setStyle(oScroll, {
+                        top: iScrollTop + 'px'
+                    })
+                    setStyle(oBar, {
+                        top: iBarTop + 'px'
+                    })
+                }
+
+                var endFn = function(e) {
+                    endTime = new Date().getTime();
+
+                    if (endTime - startTime <= 200 && isMove) {
+                        var moveY = endY - startY;
+                        var iScale = 1;
+                        var iTime = 300;
+                        if (Math.abs(moveY) <= 100) {
+                            iScale = 1;
+                            iTime = 300;
+                        } else if (Math.abs(moveY) <= 200) {
+                            iScale = 2;
+                            iTime = 500;
+                        } else {
+                            iScale = 3;
+                            iTime = 700;
+                        }
+                        moveY = moveY * iScale;
+
+                        endTop += moveY;
+                        iScrollTop = endTop > 0 ? 0 : (endTop < iWrapperH - iScrollH ? iWrapperH - iScrollH : endTop);
+                        iBarTop = -iScrollTop / iScrollH * iBarBoxH;
+
+                        setStyle(oScroll, {
+                            transition: 'all ' + iTime + 'ms ease-out',
+                            top: iScrollTop + 'px'
+                        })
+                        setStyle(oBar, {
+                            transition: 'all ' + iTime + 'ms ease-out',
+                            top: iBarTop + 'px'
+                        })
+                        clearTimeout(endTimeout);
+                        endTimeout = setTimeout(function() {
+                            setStyle(oScroll, {
+                                transition: 'all 160ms ease-out'
+                            })
+                            setStyle(oBar, {
+                                transition: 'all 160ms ease-out'
+                            })
+                        }, 500);
+                    }
+                    isMove = false;
+
+                    document.documentElement.removeEventListener('touchmove', moveFn);
+                    oContainer.removeEventListener('touchend', endFn);
+                }
+
+                document.documentElement.addEventListener('touchmove', moveFn);
+                oContainer.addEventListener('touchend', endFn);
+            })
+
+            function getStyle(obj, name) {
+                if (window.getComputedStyle) {
+                    return getComputedStyle(obj, null)[name];
+                } else {
+                    return obj.currentStyle[name];
+                }
+            }
+
+            function setStyle(obj, oStyle) {
+                for (var i in oStyle) {
+                    obj.style[i] = oStyle[i];
+                }
+            }
+
+            function numberPx(num) {
+                return Number(num.split('px')[0]);
+            }
+            setInterval(function() {
+                if (getStyle(oScroll, "top").replace("px", '') < -250) {
+                    setStyle(document.getElementById("my"), {
+                        display: "block"
+                    })
+                } else {
+                    setStyle(document.getElementById("my"), {
+                        display: "none"
+                    })
+                }
+            });
+        }
+    </script>
+
+
+    <style type="text/css">
+        .ui-form-item input:not([type=checkbox]):not([type=radio]) {
+            line-height: 25px;
+        }
+    </style>
+
+    <script>
+        setTimeout(function() {
+            $('.right-div.despositor').eq(4).on('tap', function() {
+                if ($('.despositor.detail-name-hid').eq(4).hasClass('detail-name-hid')) {
+                    $('.despositor.detail-name-hid').eq(4).removeClass('detail-name-hid');
+                } else {
+                    $('.despositor.detail-name-hid').eq(4).addClass('detail-name-hid');
+                }
+            });
+            console.log("bind success");
+        }, 5000);
+    </script>
+</body>
+
+</html>
