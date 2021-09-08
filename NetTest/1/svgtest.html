@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)https://mdn.mozillademos.org/en-US/docs/Web/SVG/Element/a$samples/Example?revision=1632650 -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="./svgtest_files/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+        @namespace svg url(http://www.w3.org/2000/svg);
+        html,
+        body,
+        svg {
+            height: 100%
+        }
+        /* As SVG does not provide a default visual style for links,
+   it's considered best practice to add some */
+        
+        @namespace svg url(http://www.w3.org/2000/svg);
+        /* Necessary to select only SVG <a> elements, and not also HTML’s.
+   See warning below */
+        
+        svg|a:link,
+        svg|a:visited {
+            cursor: pointer;
+        }
+        
+        svg|a text,
+        text svg|a {
+            fill: blue;
+            /* Even for text, SVG uses fill over color */
+            text-decoration: underline;
+        }
+        
+        svg|a:hover,
+        svg|a:active {
+            outline: dotted 1px blue;
+        }
+    </style>
+
+    <title>&lt;a&gt; - Example - code sample</title>
+</head>
+
+<body>
+
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- A link around a shape -->
+  <a href="/docs/Web/SVG/Element/circle" target="_blank">
+    <circle cx="50" cy="40" r="35"></circle>
+  </a>
+
+  <!-- A link around a text -->
+  <a href="/docs/Web/SVG/Element/text">
+    <text x="50" y="90" text-anchor="middle">
+      &lt;circle&gt;
+    </text>
+  </a>
+</svg>
+
+
+
+</body>
+
+</html>

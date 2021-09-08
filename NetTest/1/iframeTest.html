@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p>This is iframe test page</p>
+    <div style="height:50px; width: 100%"></div>
+    <iframe id="ifrmname" src="iframeTest_ext.html"></iframe>
+
+    <form action="https://www.w3school.com.cn/demo/demo_form.asp" target="_blank" method="get">
+        <p>First name: <input type="text" name="fname" value="First" /></p>
+        <p>Last name: <input type="text" name="lname" value="Last" /></p>
+        <input type="submit" value="Submit with Get" />
+    </form>
+
+    <form action="https://www.w3school.com.cn/demo/demo_form.asp" target="_blank" method="post">
+        <p>First name: <input type="text" name="fname" value="First" /></p>
+        <p>Last name: <input type="text" name="lname" value="Last" /></p>
+        <input type="submit" value="Submit with Post" />
+    </form>
+</body>
+
+<style>
+    #ifrmname {
+        width: 100%;
+        height: 800px;
+    }
+    
+    body {
+        padding-top: 20px;
+        background-color: cornflowerblue;
+        font-size: 48px;
+    }
+    
+    form {
+        margin-top: 100px;
+        width: 100%;
+        height: 300px;
+    }
+    
+    input {
+        font-size: 36px;
+    }
+</style>
+
+</html>

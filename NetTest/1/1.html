@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div class="focus">go to focus</div>
+    <div class="vuetest">go to vue test</div>
+    <div class="youtubetv">go to youtube tv</div>
+    <div class="images">go to images page</div>
+    <div class="webp">https://qual-e.appspot.com/webp.html</div>
+    <div class="awebp">https://qual-e.appspot.com/awebp.html</div>
+    <div class="music">music with vue</div>
+</body>
+<style>
+    body {
+        padding-top: 100px;
+    }
+    
+    div {
+        height: 150px;
+        margin: 12px;
+        font-size: 42px;
+        background-color: #a4a4a4;
+        text-align: center;
+        border-radius: 10px;
+        color: white;
+        line-height: 150px;
+    }
+</style>
+<script>
+    var urlMap = {
+        'focus': '../focus/focus.html',
+        'vuetest': '../vuetest/index.html',
+        'youtubetv': 'https://www.youtube.com/tv',
+        'images': '../pngs/1.html',
+        'webp': 'https://qual-e.appspot.com/webp.html',
+        'awebp': 'https://qual-e.appspot.com/awebp.html',
+        'music': 'https://sioxas.github.io/'
+    };
+
+    for (var attr in urlMap) {
+        let url = urlMap[attr];
+        document.querySelector('.' + attr).addEventListener('click', e => {
+            location.href = url;
+        });
+    }
+</script>
+
+</html>

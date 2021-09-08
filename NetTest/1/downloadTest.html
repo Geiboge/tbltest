@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>support direct download is true</title>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+    <a href="https://downapp.sina.cn/m/08/sinaNews_7.43.5_1598241410_19316.apk">新浪新闻APK 下载</a>
+    <a href="doc_download_test.doc">Doc 下载</a>
+    <a href="https://mjs.sinaimg.cn/wap/project/homev8/8.8.84/homev8/static/img/header_bg.f1a7ba54.png">图片 下载</a>
+    <form action="https://downapp.sina.cn/m/08/sinaNews_7.43.5_1598241410_19316.apk" method="get">
+        <input type="submit" value="表单下载apk" />
+    </form>
+
+    <button onclick="handleLocationClick()">location 下载</button>
+
+    <button onclick="handleOpenClick()">window open 下载</button>
+
+    <a href="https://blob-url-test.cllm.repl.co/">blob</a>
+
+    <a href="VID20201125164231.mp4">video</a>
+
+    <p>Iframe 下载</p>
+    <iframe src="https://downapp.sina.cn/m/08/sinaNews_7.43.5_1598241410_19316.apk">Iframe 下载</iframe>
+</body>
+
+<style>
+    body {
+        display: -webkit-box;
+        width: 100%;
+        -webkit-box-orient: vertical;
+    }
+    
+    a {
+        position: relative;
+        font-size: 48px;
+        margin-left: 36px;
+        width: 100%;
+    }
+    
+    form,
+    button,
+    iframe {
+        position: relative;
+        width: 200px;
+        margin-top: 24px;
+        margin-left: 24px;
+    }
+    
+    button {
+        height: 80px;
+        font-size: 24px;
+        width: 500px;
+    }
+    
+    input {
+        font-size: 36px;
+    }
+</style>
+
+<script>
+    function handleLocationClick() {
+        location.href = "https://downapp.sina.cn/m/08/sinaNews_7.43.5_1598241410_19316.apk";
+    }
+
+    function handleOpenClick() {
+        window.open("https://downapp.sina.cn/m/08/sinaNews_7.43.5_1598241410_19316.apk", target = "_self");
+    }
+
+    setTimeout(function() {
+        alert("~~");
+    }, 5000);
+</script>
+
+</html>
